@@ -1,0 +1,44 @@
+Sayid Abd-Elaziz & Davy van Weijen, ITV2G
+
+1. What is the most urgent and least urgent priority for the ESP32 Arduino?
+Meest urgent is 24 en least urgent is 0
+
+2. Do you need to call vTaskStartScheduler() for Arduino?
+Nee, de Arduino doet dat al voor je.
+
+3. When does the FreeRTOS scheduler get invoked in the course of a program’s
+execution?
+Tijdens de system tick interrupt
+
+4. What kind of scheduling occurs among tasks of equal priority?
+In een Round-Robin vorm
+
+5. How do you create a ready-to-go task and unleash it only when it is time for it to
+start?
+Door een task te maken op een lagere prioriteit dan de huidige, het vervolgens suspenden, daarna stel je het in als benodigde prioriteit en daarna kan je het vervolgen wanneer het tijd is om de task te starten.
+
+6. What causes the execution of a task to be pre-empted?
+Een task is pre-empted als er een andere task is dat ready is met een hogere prioriteit
+
+7. On the ESP32, what is the maximum time slice in ms?
+1ms
+
+8. When does less than a full-time slice occur?
+Wanneer een andere task geblokkeerd is 
+
+9. Is the call to taskYIELD() a blocking call? Why or why not?
+De taskYIELD() invokes de scheduler maar blokeert niet. Dus nee het is geen blocking call.
+
+10. Is the call to the Arduino delay() (or FreeRTOS vTaskDelay()) a blocking call? Why or
+why not?
+Ja, want de call veranderd een task naar de blocked state.
+
+11. How do you invoke the FreeRTOS scheduler directly?
+Door taskYIELD()
+
+12. How does a task become CPU starved?
+Een task dat geen tijd krijgt om uitgevoerd te worden, wordt starved genoemd. Dit kan doordat er tasks binnenkomen met een hogere prioriteit dan de starved task.
+
+13. Does a call to taskYIELD() ever result in a higher priority task running? Why or why
+not?
+Nee nooit, want de task zou al aan het runnen zijn als het een hogere prioriteit had en in de ready state stond.

@@ -1,0 +1,11 @@
+Sayid Abd-Elaziz & Davy van Weijen, ITV2G
+
+
+5. What is the initial state of a binary semaphore? Empty or given?
+Empty
+
+6. What is the initial state of a counting semaphore?
+Als je een counting semaphore aanmaakt moet je en waarde meegeven, bij deze waarde zal de semaphore starten.
+
+7.  How does the counting semaphore prevent a deadlock in the dining philosopthers problem?
+Er komen geen deadlocks voor hier omdat er de maximale aantal "eaters" gelimiteerd worden, als er 10 philosophers zijn kunnen er maar 9 eten.
